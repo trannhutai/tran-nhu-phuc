@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nhập 3 số nguyên và tìm giá trị lớn nhất</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+    let so1=prompt("nhập số mà bạn muốn lần 1:");
+    let so2=prompt("nhập số mà bạn muốn lần 2:");
+    let so3=prompt("nhập số mà bạn muốn lần 3:");
+    if (so1>so2&&so1>so3){
+        document.getElementById("demo").innerHTML="số lần 1 là số lớn nhất"
+    }else if (so2>so1&&so2>so3){
+        document.getElementById("demo").innerHTML="số lần 2 là số lớn nhất"
+    }else if (so3>so1&&so3>so2){
+        document.getElementById("demo").innerHTML="số lần 3 là số lớn nhất"
+    }else {
+        alert("bạn phải nhập số khác nhau vào đây")
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let student = +prompt("nhập điểm:")
+    let jobday =+prompt("nhập số ngày làm việc")
+    if (student>=8.0){
+        if (jobday <= 10){
+            alert("học sinh giỏi")
+        }    if(jobday>10){
+                alert("học sinh khá")
+        }
+    }else if(student>=7.0){
+             if (jobday <= 10){
+                 alert("học sinh khá")
+        }       if(jobday>10){
+                 alert("học sinh trung bình")
+        }
+    }else if(student>=5.0){
+             if (jobday <= 10){
+                 alert("học sinh trung bình")
+        }       if(jobday>10){
+                 alert("học sinh yếu")
+        }
+    }else if(student>=3.5) {
+             if (jobday <= 10){
+                 alert("học sinh yếu")
+        }       if(jobday>10){
+                 alert("học sinh kém")
+        }
+    }else {
+        alert("kém")
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hoa hồng</title>
+</head>
+<body>
+<p id ="demo"></p>
+<script>
+    let SoLuong=prompt("số lượng mà bạn bán được :");
+    let HoaHong= 10;
+    if(SoLuong/HoaHong>=100){
+        document.getElementById("demo").innerHTML="bạn làm rất tốt tháng này"
+    }else if(SoLuong/HoaHong<100){
+        document.getElementById("demo").innerHTML="tháng này bạn làm chưa tốt"
+    }else{
+        alert("nhập số hàng")
+    }
+</script>
+</body>
+</html>

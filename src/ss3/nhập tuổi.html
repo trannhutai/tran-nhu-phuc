@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nhập tuổi</title>
+</head>
+<body>
+<p id ="demo"></p>
+<script>
+    let age=prompt("nhập tuổi hiện tại của bạn: ")
+    if (age>=15){
+        document.getElementById("demo").innerHTML= "bạn đã đủ tuổi vào lớp 10";
+    }else if (age<15){
+        document.getElementById("demo").innerHTML="bạn chưa đủ tuổi để vào lớp 10";
+    }else{
+        document.getElementById("demo").innerHTML="xin lỗi bạn phải nhập tuổi vào đây";
+    }
+</script>
+</body>
+</html>
