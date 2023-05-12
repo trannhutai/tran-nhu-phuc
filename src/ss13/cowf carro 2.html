@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id ="result"></p>
+<script>
+  let table="<table border='1'>"
+  for (let i = 0; i <10 ; i++) {
+    table+="<tr>"
+    for (let j = 0; j <10 ; j++) {
+      table+="<td style='height: 30px;width: 30px'>"+"</td>"
+    }
+    table+="/<tr>"
+  }
+  table+="</table>"
+  document.write(table)
+  let arr =new Array(10);
+  for (let i =0; i <arr.length ; i++) {
+    array[i] =new Array(10)
+            for(let j = 0; j < arr[i].length ; j++)
+            arr[i][j]="";
+  }
+  checkPlayer1=true;
+  display()
+  function display(){
+    let table="<table border='1'>"
+    for (let i = 0; i <arr.length ; i++) {
+      table+="<tr>"
+      for (let j = 0; j <arr.length ; j++) {
+        table+="<td style='height: 30px;width: 30px'>"+"</td>"
+      }
+      table+="/<tr>"
+    }
+    table+="</table>"
+    document.getElementById("result").innerHTML=table
+  }
+  function phayed(i,j){
+    if(checkPlayer1&&isNotDate(i,j)) {
+      arr[i, j] = "X"
+        checkPlayer1 = false;
+        if (checkWin(i, j) === true) {
+
+        alert("X win")
+      }
+    }
+      else if (!checkPlayer1&&isNotDate(i,j))
+      {
+        array[i][j] ="O"
+        checkPlayer1= true
+
+      }
+  }
+  function isNotDate(i,j){
+
+  }
+  function checkWin(){
+
+  }
+</script>
+</body>
+</html>

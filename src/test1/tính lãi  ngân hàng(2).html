@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let SoTienGui =prompt("nhập số tiền mà bạn gửi bạn đầu :");
+  let SoNgayGui =prompt("nhập số ngày mà bạn gửi :");
+  let SoThangGui=prompt("nhập số tháng gửi :");
+  let LaiSuatNgay = 0.05 ;   //lãi là 0.05%/ngày
+  let LaiSuatThang = 1.5  ;  //lãi là 0.05%/ngày
+    let h = SoTienGui;
+    let a = h / 100* LaiSuatNgay * SoNgayGui;
+    let b = h / 100 * LaiSuatThang * SoThangGui;
+    let c = h+a;
+    let d = h+b;
+  document.write("đây là số tiền lãi mà bạn nhận sau "      + SoNgayGui  +" ngày là " + a +"</br>")
+  document.write("đây là tất cả  số tiền  mà bạn nhận sau " + SoNgayGui  +" ngày là " + c +"</br>")
+  document.write("đây là số tiền lãi mà bạn nhận sau "      + SoThangGui +" tháng là "+ b +"</br>")
+  document.write("đây là tất cả số tiền mà bạn nhận sau "   + SoThangGui +" tháng là "+ d +"</br>")
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let a=[];
+  let b=[];
+  let an=prompt("nhập chuỗi 1")
+  let on=prompt("nhập chuỗi 2")
+ a.push(an)
+ b.push(on)
+  let c=true
+  for (let i = 0; i <a.length ; i++) {
+      for (let j = 0; j <b.length ; j++) {
+          if(a[i]!==b[j]){
+              c=false
+          }
+      }
+  }if (c){
+      document.write("hai mảng giống nhau")
+  }else{
+      document.write("hai mảng khác nhau")
+  }
+</script>
+</body>
+</html>

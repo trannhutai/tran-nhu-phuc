@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text">
+<input type="button" name ="add" id="add"  value="add" onclick="add_element_to_array()">
+<input type="button" name ="display" id ="display" value="Display"onclick="displayarray()">
+<p id ="result"></p>
+<script>
+    let x=0
+    let array=Array()
+    function add_element_to_array(){
+       array[x]=document.getElementById("add").value
+        alert("Element: "+ array[x] +"Added at index" + x );
+       x++;
+       document.getElementById("Display").value="";
+    }
+
+    function displayarray(){
+        let e = "<hr/>"
+        for (let i = 0; i <array.length ; i++) {
+            c +="Element " +i + " = "+ array[i] +"</br>"
+        }
+        document.getElementById("result").innerHTML = c;
+    }
+</script>
+</body>
+</html>

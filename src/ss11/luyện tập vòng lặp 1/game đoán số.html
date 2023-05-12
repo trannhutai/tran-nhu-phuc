@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kéo búa bao</title>
+</head>
+<body>
+<!--<p id ="demo" ></p>-->
+<!--<button onclick="myfunction()">click me</button>-->
+<script>
+    let computer = Math.floor(Math.random()*3)
+    let person =prompt("nhập 3 số 0(búa) số 1(bao) số 2(kéo)")
+    if (computer==0){
+        alert('computer ra búa')
+    }else if (computer==1){
+        alert(" computer ra bao")
+    }else {
+        alert("computer ra kéo")
+    }
+
+    if (person==0){
+        alert('person ra búa')
+    }else if (person==1){
+        alert("person ra bao")
+    }else {
+        alert("person ra kéo")
+    }
+
+    if (computer==person){
+        alert('hoa')
+    }else if (computer>person){
+        alert("computer win")
+    }else if( computer<person) {
+        alert("person win")
+    }else{
+        alert("bạn phải nhập số từ 0 đén 2")
+    }
+
+function myfunction(){
+    document.getElementById("demo").innerHTML="hello world"
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+function phuc(tran,nhu){
+    let arr=[]
+    for (let i = 0; i <tran.length ; i++) {
+        let element = tran[i]
+        if(nhu(element)){
+            arr.push(element)
+        }
+    }
+    return arr
+}
+let a=phuc([1,2,3,4,5,6,7,8,9,10],function (index,value){
+    return index%2==1
+})
+document.write(a)
+</script>
+</body>
+</html>

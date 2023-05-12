@@ -5,26 +5,39 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Caculator</h1>
-<input type="number"id="a">
-<input type="number"id="b">
-    <p id ="Result"></p>
-</br>
-<button onclick="Addition()" id ="addition" value="Addition">Addition(+)</button>
-<!--<button onclick="Subtraction()" id="subtraction" value="Addition">Subtraction(-)</button>-->
-<!--<button onclick="Multiplication()" id = "multiplication" value="Addition">Multiplication(*)</button>-->
-<!--<button onclick="Division()" id="division" value="Addition">Division(/)</button>-->
-<script>
-    function Addition(){
-        let a=document.getElementById("a").value;
-        let b=document.getElementById("b").value;
-        let Result = a + b;
-        switch(Addition){
-            case "+":
-                Result=a + b;
-        }document.getElementById("Result").innerHTML=Result;
-        }
+    <input type="text" id="bang1">
+    <input type="text" id="bang2">
+    <button onclick="Addition()" >+</button>
+    <button onclick="Subtraction()" >-</button>
+    <button onclick="Multiplication()" >*</button>
+    <button onclick="Division()" >/</button>
+    </br>
+    </br>
 
+   <label>kết quả =</label> <span type="text" id ="output" value="kết quả:"></span>
+<script>
+    let number1=document.getElementById("bang1");
+    let number2=document.getElementById("bang2");
+    let Addition1;
+    let Subtraction1;
+    let Multiplication1;
+    let Division1;
+    function Addition(){
+        Addition1= parseInt(number1.value) + parseInt(number2.value)
+        document.getElementById("output").innerHTML=Addition1
+    }
+    function Subtraction() {
+        Subtraction1 = parseInt(number1.value) - parseInt(number2.value)
+        document.getElementById("output").innerHTML = Subtraction1
+    }
+    function Multiplication(){
+        Multiplication1=parseInt(number1.value) * parseInt(number2.value)
+        document.getElementById("output").innerHTML = Multiplication1
+    }
+    function Division(){
+        Division1=parseInt(number1.value) / parseInt(number2.value)
+        document.getElementById("output").innerHTML =Division1
+    }
 </script>
 </body>
 </html>

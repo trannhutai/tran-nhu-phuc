@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+let arr=[];       /* tạo ra một arr rỗng*/
+let input=prompt();/* tạo khung người nhập*/
+let b=0;/* tạo ra giá trị index*/
+for (let i = 0; i <input ; i++) {
+    let enter=prompt("nhập phần tử thứ "+ (i+1) +" của mảng");/* lặp lại số lần input*/
+    arr.push(enter);/* thêm enter vào arr(Array)*/
+    if(!isNaN(parseInt(enter))){/* kiểm tra xem enter nhập vào có phải số hay không*/
+        b++;/*nếu là số thì lặp lại b*/
+    }
+}
+document.write("số mảng đã nhập "+arr.join(", ")+"</br>")/*in ra tất cả các số đã nhập*/
+
+document.write("số ký tự  "+b)/*in ra index*/
+</script>
+</body>
+</html>
