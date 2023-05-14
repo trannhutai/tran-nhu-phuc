@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="word" placeholder="Enter word">
+<button onclick="search()">Search</button>
+<p id="result"></p>
+<script>
+    function search() {
+        let word = document.getElementById("word").value;
+        let arrayE = ["hello", "you", "good"]
+        let arrayVN = ["xin chào", "bạn", "tốt"]
+        let result = "";
+        let index = -1;
+        // index = arrayE.indexOf(word);
+        for (let i = 0; i < arrayE.length; i++) {
+            if (arrayE[i] == word) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            result = arrayVN[index];
+        } else {
+            result = "không tìm thấy"
+        }
+
+        document.getElementById("result").innerText = result;
+
+    }
+</script>
+</body>
+</html>
