@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //xét số nguyên âm trong mảng và vị trí
+    let arr=[1,2,31,23,1,23,123,-1,23,-123]
+    let viTri=[0]
+    for (let i = 0; i <arr.length ; i++) {
+        if (arr[i] < 0) {
+            viTri=i
+            alert(arr[i])
+            document.write("vị trí của "+arr[i] + " là " +viTri+"</br>")
+        }
+    }
+</script>
+</body>
+</html>
