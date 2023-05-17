@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+function player(phuc){
+    let play;
+    if(phuc){
+        play="ok!are you ready?"
+    }else{
+        play="oh!maybe later then"
+    }
+    return play;
+}
+    let answerConfirm=confirm("would you like to play game  with me?")// cho người dùng chọn có hoặc không(confirm)
+    let answer=player(answerConfirm)
+    alert(answer)
+</script>
+</body>
+</html>

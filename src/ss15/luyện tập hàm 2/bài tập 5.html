@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="min"></p>
+<script>
+//tìm giá trị nhỏ nhất trong mảng
+    function min(arr){
+        let min1=arr[0]
+        let min1_index=0
+        for (let i = 0; i <arr.length ; i++) {
+            if(min1<=arr){
+                min1=arr[i]
+                min1_index=i
+            }
+        }
+        document.getElementById("min").innerHTML=min1
+        document.getElementById("min").innerHTML=min1_index
+    }
+    let mina=[0,1,2,3,-1]
+
+</script>
+</body>
+</html>

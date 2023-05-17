@@ -6,20 +6,19 @@
 </head>
 <body>
 <script>
-    <!--    chưa hoàn thành cần hỗ trợ-->
     let number=[1,2,3,45,6,1,4,123,12,31,312,3,123,123,13]
-    let flag=false;
-    let person=parseInt(prompt("nhập số mà bạn muốn"))
+    let person=parseInt(prompt())
+    let flag;
     for (let i = 0; i <number.length ; i++) {
-        if(number[i]==person){
-            alert("v IN")
+        if(number[i]===person){
+            alert("true")
             flag=true
             break;
         }
-    }
+        if(flag=false){
+            alert("false")
+        }
 
-    if(flag==false){
-        alert("not in")
     }
 </script>
 

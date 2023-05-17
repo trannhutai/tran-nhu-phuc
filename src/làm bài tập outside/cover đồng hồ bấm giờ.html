@@ -7,7 +7,7 @@
 <body>
 <h1>Stopwatch</h1>
 <h2>Vanilla JavaScript Stopwatch</h2>
-<span id ="seconds">00</span>:<span id ="milliseconds">00</span>
+<span id="min">00</span>:</span><span id ="seconds">00</span>:<span id ="milliseconds">00</span>
 </br>
 </br>
 <button id="start">Start</button>
@@ -17,6 +17,8 @@
     window.onload= function display(){
         let giay=0.0;
         let miligiay=0.0;
+        let phut=0
+        let min=document.getElementById("hours");
         let seconds=document.getElementById("seconds");
         let milliseconds=document.getElementById("milliseconds");
         let start=document.getElementById("start");
@@ -63,6 +65,15 @@
 
             if(giay>9){
                 seconds.innerHTML=giay;
+            }
+            if(phut>59){
+                console.log("hours")
+                phut++
+                min.innerHTML="0"+gio
+                giay=0
+                seconds.innerHTML="0"+0
+                miligiay=0
+                milliseconds.innerHTML="0" + 0
             }
         }
 }

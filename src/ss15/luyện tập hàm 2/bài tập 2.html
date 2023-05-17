@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="chuvi"></p>
+<p id="dientich"></p>
+<script>
+    let pi=3.14515
+ function chuViHinhTron(R){
+        let dienTich= (R*R)*pi/4
+     document.getElementById("dientich").innerHTML="diện tích : "+dienTich
+        let chuVi=(R*2)*pi
+     document.getElementById("chuvi").innerHTML="chu vi : "+chuVi
+
+ }
+     let a=prompt("nhập số bán kính bạn muốn")
+     chuViHinhTron(a)
+
+</script>
+</body>
+</html>

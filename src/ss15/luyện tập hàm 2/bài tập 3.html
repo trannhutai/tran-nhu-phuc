@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="giaithua"></p>
+<script>
+    function giaiThua(number){
+        let ketQua=1;
+        for (let i = 1; i <=number ; i++) {
+            ketQua*=i
+        }
+        return ketQua;
+    }
+    let a=prompt("nhập số bất kỳ : ")
+    let giaiThua1=giaiThua(a)
+
+    document.getElementById("giaithua").innerHTML="giai thừa = "+giaiThua1
+</script>
+</body>
+</html>

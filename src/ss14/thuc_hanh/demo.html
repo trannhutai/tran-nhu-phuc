@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>Fahrenheit</label>
+<input id ="personInput" type="number" placeholder="Fahrenheit"
+oninput="changeMoney(this.value)"
+onchange="changeMoney(this.value)"
+>
+<p>Celsius: <span  id ="Celsius"></span></p>
+<script>
+    function changeMoney(abc){
+        abc=parseInt(abc)
+        document.getElementById("Celsius").innerHTML=(abc-32)/1.8
+    }
+</script>
+</body>
+</html>
