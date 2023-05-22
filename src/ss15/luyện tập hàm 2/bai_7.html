@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="number"></p>
+<p id="number1"></p>
+<script>
+    //hoán đổi hai số
+    function number(number1,number2){
+        document.getElementById("number").innerHTML="trước khi hoán đổi a = "+number1+" b = "+ number2//input lệnh chưa hoán đổi
+        let chanGe=number1;//công thức hoán đổi
+        number1=number2
+        number2=chanGe
+        document.getElementById("number1").innerHTML="sau khi hoán đổi a = "+number1+" b = "+ number2//in put lệnh đã hoán đổibài
+    }
+    let x=10
+    let y=5
+    number(x,y)
+
+</script>
+</body>
+</html>

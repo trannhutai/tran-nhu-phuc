@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="enter" placeholder="Enter product name">
+<button onclick="addString()">Add</button>
+<p id="result"></p>
+<p id="index"></p>
+
+<script>
+    let string=["SamSung","NoKia","Iphone"]
+    display()
+    function addString(){
+        let newString=document.getElementById("enter").value
+        if(newString!=""){
+            string.push(newString)
+        }else{
+            alert("please enter")
+        }
+        display()
+    }
+    function editString(index){
+        let newString=prompt("nhap th ban muon",string[index])
+            string[index] = newString
+        display()
+    }
+    function deleteString(id){
+        let cor=confirm("ban co chac la muon xoa chu ? "+string[id])
+        if(cor){
+            string.splice(id,1)
+        }else{}
+        display()
+    }
+    function display(){
+       let tableString='<table border="1">\n' +
+            '    <tr>\n' +
+            '        <td>STT</td>\n' +
+            '        <td>Name</td>\n' +
+            '        <td>Edit</td>\n' +
+            '        <td>Delete</td>\n' +
+            '    </tr>\n'
+        for (let i = 0; i <string.length ; i++) {
+            tableString += '<tr>\n' +
+                '        <td>'+(i+1)+'</td>\n' +
+                '        <td>'+string[i]+'</td>\n' +
+                '        <td><button onclick="editString('+i+')">Edit</button></td>\n' +
+                '        <td><button onclick="deleteString('+ i +')">Delete</button></td>\n' +
+                '    </tr>'
+        }
+            tableString += '</table>'
+        document.getElementById("result").innerHTML=tableString
+        document.getElementById("index").innerHTML="so luong : "+string.length
+
+    }
+</script>
+</body>
+</html>
