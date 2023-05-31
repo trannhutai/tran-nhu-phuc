@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id ="luongnhanvien" placeholder="Enter salary"></input>
+<button onclick="add()">add</button>
+<p id="result"></p>
+<script>
+    function add(){
+        let salary=document.getElementById("luongnhanvien").value;
+        if(salary>=15000000){
+            let luong= salary *20 /100
+            document.getElementById("result").innerHTML=" tiền thế của bạn là : "+luong+" (20%) "
+        }else if(salary>=7000000){
+            let luong=salary*10/100
+            document.getElementById("result").innerHTML=" tiền thế của bạn là : "+luong+" (10%)"
+        }else{
+            let luong=salary*5/100
+            document.getElementById("result").innerHTML=" tiền thế của bạn là : "+luong+" (5%)"
+        }
+    }
+</script>
+</body>
+</html>

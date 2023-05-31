@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text" id="id" placeholder="Enter id">
+<input type="text" id="name" placeholder="Enter Name">
+<input type="text" id="address" placeholder="Enter address">
+<button id="btn-add">Add</button>
+<button id="btn-edit" style="display: none">Update</button>
+<p id="result"></p>
+<script>
+  class EmployeeManager {
+    constructor() {
+      this.employeeList = [];
+      this.updateIndex = -1;
+
+      this.employee1 = new Employee("MNV-001", "Lê Huy Nhất", "Đà Nẵng");
+      this.employee2 = new Employee("MNV-002", "Lê Huy Hai", "Đà Nẵng");
+      this.employee3 = new Employee("MNV-003", "Lê Huy Ba", "Đà Nẵng");
+
+      this.employeeList.push(this.employee1, this.employee2, this.employee3);
+
+      this.display();
+      this.bindEventListeners();
+    }
+
+    bindEventListeners() {
+      const addButton = document.getElementById("btn-add");
+      addButton.addEventListener("click", () => this.addNew());
+
+      const editButton = document.getElementById("btn-edit");
+      editButton.addEventListener("click", () => this.updateEmployee());
+    }
+
+    addNew() {
+      const id = document.getElementById("id").value;
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const newEmployee = new Employee(id, name, address);
+      this.employeeList.push(newEmployee);
+      this.clearInputs();
+      this.display();
+    }
+
+    updateEmployee() {
+      const editId = document.getElementById("id").value;
+      const editName = document.getElementById("name").value;
+      const editAddress = document.getElementById("address").value;
+      this.employeeList[this.updateIndex].setId(editId);
+      this.employeeList[this.updateIndex].setName(editName);
+      this.employeeList[this.updateIndex].setAddress(editAddress);
+      this.clearInputs();
+      this.display();
+    }
+
+    deleteEmployee(index) {
+      const employeeName = this.employeeList[index].getName();
+      const conf = confirm("Do you want to delete employee: " + employeeName + "?");
+      if (conf) {
+        this.employeeList.splice(index, 1);
+        this.display();
+      }
+    }
+
+    display() {
+      const table = document.createElement("table");
+      table.setAttribute("border", "1");
+      table.style.borderCollapse = "collapse";
+
+      const headerRow = document.createElement("tr");
+      const headers = ["#", "ID", "Name", "Address", "Edit", "Delete"];
+
+      headers.forEach(headerText => {
+        const header = document.createElement("th");
+        header.textContent = headerText;
+        headerRow.appendChild(header);
+      });
+
+      table.appendChild(headerRow);
+
+      this.employeeList.forEach((employee, index) => {
+        const row = document.createElement("tr");
+
+        const cellIndex = document.createElement("td");
+        // cellIndex.textContent = index + 1;
+        row.appendChild(cellIndex);
+
+        const cellId = document.createElement("td");
+        cellId.textContent = employee.getId();
+        row.appendChild(cellId);
+
+        const cellName = document.createElement("td");
+        cellName.textContent = employee.getName();
+        row.appendChild(cellName);
+
+        const cellAddress = document.createElement("td");
+        cellAddress.textContent = employee.getAddress();
+        row.appendChild(cellAddress);
+
+        const cellEdit = document.createElement("td");
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.addEventListener("click", () => this.showInfoEdit(index));
+        cellEdit.appendChild(editButton);
+        row.appendChild(cellEdit);
+
+        const cellDelete = document.createElement("td");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", () => this.deleteEmployee(index));
+        cellDelete.appendChild(deleteButton);
+        row.appendChild(cellDelete);
+
+        table.appendChild(row);
+      });
+
+      const result = document.getElementById("result");
+      result.innerHTML = "";
+      result.appendChild(table);
+    }
+
+    showInfoEdit(index) {
+      this.updateIndex = index;
+      const employee = this.employeeList[index];
+      document.getElementById("id").value = employee.getId();
+      document.getElementById("name").value = employee.getName();
+      document.getElementById("address").value = employee.getAddress();
+      document.getElementById("btn-add").style.display = "none";
+      document.getElementById("btn-edit").style.display = "inline";
+    }
+
+    clearInputs() {
+      document.getElementById("id").value = "";
+      document.getElementById("name").value = "";
+      document.getElementById("address").value = "";
+    }
+  }
+
+  class Employee {
+    constructor(id, name, address) {
+      this.id = id;
+      this.name = name;
+      this.address = address;
+    }
+
+    setId(id) {
+      this.id = id;
+    }
+
+    setName(name) {
+      this.name = name;
+    }
+
+    setAddress(address) {
+      this.address = address;
+    }
+
+    getId() {
+      return this.id;
+    }
+
+    getName() {
+      return this.name;
+    }
+
+    getAddress() {
+      return this.address;
+    }
+  }
+
+  new EmployeeManager();
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function commonCharacterCount(s1, s2) {
+        // Tạo đối tượng đếm cho các kí tự trong s1
+        let countS1 = {};
+        for (let char of s1) {
+            countS1[char] = (countS1[char] || 0) + 1;
+        }
+        let commonCount = 0;
+        // Đếm số lượng kí tự chung và giảm số lượng kí tự trong đối tượng đếm
+        for (let char of s2) {
+            if (countS1[char] && countS1[char] > 0) {
+                commonCount++;
+                countS1[char]--;
+            }
+        }
+        return commonCount;
+    }
+    // Ví dụ sử dụng
+    let s1 = "aabcc";
+    let s2 = "adcaa";
+    console.log(commonCharacterCount(s1, s2));  // Output: 3
+
+</script>
+</body>
+</html>

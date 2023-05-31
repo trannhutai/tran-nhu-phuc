@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game ô tô</title>
+    <style>
+        #gameCanvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="gameCanvas" width="400" height="400"></canvas>
+
+<script>
+    class gameCanvas {
+            constructor() {
+                this.canvas=document.getElementById('gameCanvas');
+                this.context = this.canvas.getContext('2d');
+                this. carImage = new Image();
+                this.carImage.src = 'car.png';
+                this.carWidth = 50;
+                this.carHeight = 100;
+                this.carX = this.canvas.width / 2 - this.carWidth / 2;
+                this.carY = this.canvas.height - this.carHeight;
+                this.carSpeed = 2;
+            }
+         drawCar() {
+            this.context.drawImage(this.carImage, this.carX, this.carY, this.carWidth, this.carHeight);
+        }
+
+         moveCarUp() {
+            this.carY -= this.carSpeed;
+        }
+         keyDownHandler(event) {
+                this.accelerate = false;
+            if (event.key === 'Control') {
+                this.accelerate = true;
+            }
+            if (event.key === 'ArrowLeft') {
+                this.turnLeft();
+            }
+            if (event.key === 'ArrowRight') {
+                this.turnRight();
+            }
+        }
+        keyUpHandler(event) {
+            if (event.key === 'Control') {
+                this.accelerate = false;
+            }
+        }
+        turnLeft() {
+            // Bước 5: Cho xe rẽ trái nếu phím mũi tên trái được nhấn
+            // Xử lý việc rẽ trái ở đây
+        }
+        turnRight() {
+            // Bước 6: Tiếp tục bước số 5 cho các phím mũi tên khác
+            // Xử lý việc rẽ phải ở đây
+        }
+        drawObstacle() {
+            this.obstacleX = 50;
+            this.obstacleY = 50;
+            this.obstacleWidth = 30;
+            this.obstacleHeight = 30;
+            this.context.fillStyle = 'red';
+            this.context.fillRect(this.obstacleX, this.obstacleY, this.obstacleWidth, this.obstacleHeight);
+        }
+        checkCollision() {
+            if (
+                this.carX < this.obstacleX + this.obstacleWidth &&
+                this.carX + this.carWidth > this.obstacleX &&
+                this.carY < this.obstacleY + this.obstacleHeight &&
+                this.carY + this.carHeight > this.obstacleY
+            ) {
+                this.endGame();
+            }
+        }
+        endGame() {
+            // Xử lý khi game kết thúc ở đây
+        }
+        generateObstacles() {
+            this.obstacles = [];
+            this.obstacles.push({
+                x: Math.random() * (this.canvas.width - this.obstacleWidth),
+                y: Math.random() * (this.canvas.height - this.obstacleHeight),
+                width: this.obstacleWidth,
+                height: this.obstacleHeight
+            });
+        }
+        drawObstacles() {
+            this.obstacles.forEach((obstacle) => {
+                this.context.fillStyle = 'red';
+                this.context.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+            });
+        }
+        drawReward() {
+            this.rewardX = 200;
+            this.rewardY = 200;
+            this.rewardWidth = 20;
+            this.rewardHeight = 20;
+            this.score = 0;
+            this.context.fillStyle = 'gold';
+            this.context.fillRect(this.rewardX, this.rewardY, this.rewardWidth, this.rewardHeight);
+        }
+        checkRewardCollision() {
+            if (this.carX < this.rewardX + this.rewardWidth &&
+                this.carX + this.carWidth > this.rewardX &&
+                this.carY < this.rewardY + this.rewardHeight &&
+                this.carY + this.carHeight > this.rewardY)
+            {this.score++;}
+        }
+        generateRewards() {
+            this.rewards = [];
+            this.rewards.push({
+                x: Math.random() * (this.canvas.width - this.rewardWidth),
+                y: Math.random() * (this.canvas.height - this.rewardHeight),
+                width: this.rewardWidth,
+                height: this.rewardHeight
+            });
+        }
+        drawRewards() {
+            this.rewards.forEach((reward) => {
+                this.context.fillStyle = 'gold';
+                this.context.fillRect(reward.x, reward.y, reward.width, reward.height);
+            });
+        }
+        draw() {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.drawCar();
+            this.drawObstacle();
+            this.drawObstacles();
+            this.drawReward();
+            this.drawRewards();
+            this.moveCarUp();
+            if (this.accelerate) {
+                this.carSpeed += 0.1;
+            }
+            this.checkCollision();
+            this.checkRewardCollision();
+            requestAnimationFrame(this.draw);
+        }
+    }
+    document.addEventListener('keydown',gameCanvas.keyDownHandler());
+    document.addEventListener('keyup',gameCanvas.keyUpHandler);
+    let a=gameCanvas.generateObstacles();
+    let b=gameCanvas.generateRewards();
+    let c=gameCanvas.draw();
+    document.write(a)
+    document.write(b)
+    document.write(c)
+</script>
+</body>
+</html>
+
+</body>
+</html>

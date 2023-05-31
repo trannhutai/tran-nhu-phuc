@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-
 </head>
 <body>
 <input type="text" id="id" placeholder="Enter id">
@@ -52,11 +51,11 @@
     employeeList[updateIndex].setId(editId);
     employeeList[updateIndex].setName(editName);
     employeeList[updateIndex].setAddress(editAddress);
-    document.getElementById("btn-add").style.display="inline";
-    document.getElementById("btn-edit").style.display="none";
-    document.getElementById("id").value="";
-    document.getElementById("name").value="";
-    document.getElementById("address").value="";
+    // document.getElementById("btn-add").style.display="inline";
+    // document.getElementById("btn-edit").style.display="none";
+    // document.getElementById("id").value="";
+    // document.getElementById("name").value="";
+    // document.getElementById("address").value="";
     display(employeeList);
   }
   function addNew() {
@@ -108,7 +107,6 @@
     document.getElementById("btn-add").style.display="none";
     document.getElementById("btn-edit").style.display="inline";
   }
-
 </script>
 </body>
 </html>

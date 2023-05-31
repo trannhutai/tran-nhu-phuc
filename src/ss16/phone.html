@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+class myPhone {
+    constructor(ten) {
+        this.ten = ten;
+        this.trangThai = false;
+        this.pin = 100;
+        this.tinNhanSoanThao = "";
+        this.hopThuDen = [];
+        this.hopThuGui = [];
+    }
+    KiemTraTrangThai(){
+        if(!this.trangThai){
+            console.log(`${this.ten}: Điện thoại đã được bật.`);
+        }else{
+            console.log(`${this.ten}: Điện thoại đã được tắt.`);
+        }
+        this.pin-=1;
+    }SacPin(){
+        if(!this.pin){
+            console.log(`${this.ten}: Điện thoại chưa được sạc đầy.`);
+        }else{
+            console.log(`${this.ten}: Điện thoại đã được sạc đầy.`);
+        }
+        this.pin-=1;
+    }SoanTinNhan(noiDung){
+        if (!this.trangThai) {
+            this.tinNhanSoanThao = noiDung;
+            this.pin -= 1;
+            console.log(`${this.ten}: Đã soạn tin nhắn.`);
+        } else {
+            console.log(`${this.ten}: Điện thoại chưa được bật.`);
+        }
+        this.pin-=1;
+    }NhanTinNhan(tinNhan,nguoiGui){
+        if(!this.trangThai) {
+            this.hopThuDen.push({tinNhan, nguoiGui});
+            console.log(`${this.ten}: đã nhận tin nhắn từ ${nguoiGui}`)
+            this.pin-=1;
+        }else{
+            console.log("điện thoại chưa được bật")
+        }
+    }GuiTinNhan(tinNhan,NguoiNhan){
+        if(!this.trangThai){
+            this.hopThuGui.push({tinNhan,NguoiNhan})
+            console.log(`${this.ten} đã gửi tin nhắn đến ${NguoiNhan}`)
+        }else{
+            console.log("điện thoại chưa được bật")
+        }
+        this.pin-=1;
+    }XemTinNhan(tinNhan){
+        if(!this.trangThai){
+            this.hopThuDen=tinNhan
+            console.log(`${this.ten} hộp thư đến có nội dung là ${tinNhan}`)
+        }else{
+            console.log("điện thoại chưa được bật")
+        }
+        this.pin-=1;
+    }XemTinNhanDaGui(){
+        if(!this.trangThai){
+            console.log(`${this.ten}: Hộp thư  đã gửi - Có ${this.hopThuGui.length} tin nhắn:`);
+            for (let i = 0; i <this.hopThuDen.length ; i++) {
+                console.log(`${this.ten} hộp thư đã gửi đến ${this.hopThuGui[i].NguoiNhan} có nội dung ${this.hopThuGui[i].tinNhan}`)
+            }
+        }else{
+            console.log("điện thoại chưa được   bật")
+        }
+        this.pin-=1
+    }
+}
+let Iphone=new myPhone("Iphone")
+Iphone.KiemTraTrangThai()
+Iphone.SacPin()
+Iphone.SoanTinNhan("hello Iphone")
+Iphone.NhanTinNhan("hello Iphone",Iphone.ten)
+Iphone.GuiTinNhan("what's up?","phúc")
+Iphone.XemTinNhan("how is it going?")
+Iphone.XemTinNhanDaGui()
+let a=Iphone.pin
+console.log(a)
+</script>
+</body>
+</html>

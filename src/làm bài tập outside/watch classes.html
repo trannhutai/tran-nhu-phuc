@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="min">00</span>:</span><span id ="seconds">00</span>:<span id ="milliseconds">00</span>
+</br>
+</br>
+<button id="start">Start</button>
+<button id ="stop">Stop</button>
+<button id ="reset">Reset</button>
+<script>
+    class timer{
+        constructor() {
+            this.giay=0;
+            this.miligiay=0;
+            this.phut=0;
+            this.min=document.getElementById("min");
+            this.seconds=document.getElementById("seconds");
+            this.miliseconds=document.getElementById("milliseconds");
+            this.start=document.getElementById("start");
+            this.stop=document.getElementById("stop");
+            this.reset=document.getElementById("reset");
+            this.interval;
+        }
+        display(){
+            this.start.onclick=()=>{
+                clearInterval(this.interval);
+                this.interval=setInterval(this.inside.bind(this),10)
+            }
+            this.stop.onclick=()=>{
+                clearInterval(this.interval)
+            }
+            this.reset.onclick=()=>{
+                clearInterval(this.interval)
+                this.a="00"
+                this.b="00"
+                this.miliseconds.innerHTML=this.a
+                this.seconds.innerHTML=this.b
+            }
+        }
+        inside(){
+            this.miligiay++
+            if(this.miligiay<=9){
+                this.miliseconds.innerHTML="0"+this.miligiay
+            }
+            if (this.miligiay>9){
+               this.miliseconds.innerHTML=this.miligiay;
+            }
+
+            if(this.miligiay>=99){
+                console.log("seconds");
+                this.giay++;
+                this.seconds.innerHTML="0" + this.giay;
+                this.miligiay = 0;
+                this.miliseconds.innerHTML="0" + 0;
+            }
+
+            if(this.giay>9){
+                this.seconds.innerHTML=this.giay;
+            }
+            if(this.phut>59){
+                this.phut++
+                this.min.innerHTML="0"+this.phut
+                this.giay=0
+                this.seconds.innerHTML="0"+0
+                this.miligiay=0
+                this.miliseconds.innerHTML="0" + 0
+            }
+        }
+
+    }
+    window.onload = function () {
+        let timer1 = new timer();
+        timer1.display();
+    };
+</script>
+</body>
+</html>

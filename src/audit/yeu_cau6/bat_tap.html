@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="addStudent()" >Thêm mới học viên</button>
+<button onclick="editStudent()">Sửa thông tin học viên</button>
+<button onclick="deleteStudent()">Xóa học viên</button>
+<br>
+<br>
+<p id="id"></p>
+<button onclick="add()">add</button>
+<button onclick="edit()">edit</button>
+<br>
+<p id="student"></p>
+<script>
+    class Student{
+        constructor(MHV,Name,Lop,Email,NS) {
+            this.MHV=MHV;
+            this.Name=Name;
+            this.Lop=Lop;
+            this.Email=Email;
+            this.NS=NS
+        }
+        setMHV(MHV){
+            this.MHV=MHV
+        }
+        setName(Name){
+            this.Name=Name;
+        }
+        setLop(Lop){
+            this.Lop=Lop;
+        }
+        setEmail(Email){
+            this.Email=Email;
+        }
+        setNS(NS){
+            this.NS=NS
+        }
+        getMHV(){
+            return this.MHV
+        }
+        getName(){
+            return this.Name;
+        }
+        getLop(){
+            return this.Lop;
+        }
+        getEmail(){
+            return this.Email;
+        }
+        getNS(){
+            return this.NS
+        }
+    }
+    let productList=[]
+    let Student1= new Student("HV-0001","Nguyễn Văn A","C1022G1","nguyenvana@gmail.com","01/01/2004")
+    let Student2= new Student("HV-0002","Nguyễn Văn B","C1122G1","nguyenvanb@gmail.com","02/02/2004")
+    let Student3= new Student("HV-0003","Nguyễn Văn C","C1222G1","nguyenvanc@gmail.com","03/03/2004")
+    productList.push(Student1,Student2,Student3)
+    display(productList)
+    function display(list){
+        let   bang='<table border="1" >\n' +
+            '    <tr>\n' +
+            '        <th>Mã Học Viên</th>\n' +
+            '        <th>Tên</th>\n' +
+            '        <th>Lớp</th>\n' +
+            '        <th>Email</th>\n' +
+            '        <th>Ngày Sinh</th>\n' +
+            '    </tr>'
+        for (let i = 0; i <list.length ; i++) {
+            bang+='<tr>\n' +
+                '        <th>'+list[i].getMHV()+'</th>\n' +
+                '        <th> '+ list[i].getName()+ '</th>\n' +
+                '        <th>'+ list[i].getLop()+'</th>\n' +
+                '        <th>'+ list[i].getEmail() +'</th>\n' +
+                '        <th>'+ list[i].getNS()+'</th>\n' +
+                '    </tr>'
+        }
+        bang+='</table>'
+        document.getElementById("student").innerHTML=bang
+    }
+    function addStudent(){
+        document.getElementById("id").innerHTML='<input id="enter1" placeholder="Nhập Mã Học Viên">\n' +
+            '<input id="enter2" placeholder="Nhập Tên">\n' +
+            '<input id="enter3" placeholder="Nhập Lớp">\n' +
+            '<input id="enter4" placeholder="Nhập Email">\n' +
+            '<input id="enter5" placeholder="Nhập Ngày Sinh">'
+    }
+    function add(){
+        let MHV=document.getElementById("enter1").value;
+        let NAME=document.getElementById("enter2").value;
+        let CLASS=document.getElementById("enter3").value;
+        let EMAIL=document.getElementById("enter4").value;
+        let NS=document.getElementById("enter5").value;
+        let product=new Student(MHV,NAME,CLASS,EMAIL,NS)
+        productList.push(product)
+        display(productList)
+    }
+    function editStudent(){
+         prompt()
+        document.getElementById("id").innerHTML='<input id="enter1" placeholder="Nhập Mã Học Viên">\n' +
+            '<input id="enter2" placeholder="Nhập Tên">\n' +
+            '<input id="enter3" placeholder="Nhập Lớp">\n' +
+            '<input id="enter4" placeholder="Nhập Email">\n' +
+            '<input id="enter5" placeholder="Nhập Ngày Sinh">'
+    }
+    let index1=-1
+    function edit(){
+        let  a=prompt("ghi mã sinh viên mà bạn muôn thay đổi")
+        let MHV1=document.getElementById("enter1").value;
+        let NAME1=document.getElementById("enter2").value;
+        let CLASS1=document.getElementById("enter3").value;
+        let EMAIL1=document.getElementById("enter4").value;
+        let NS1=document.getElementById("enter5").value;
+        if(a==productList.MHV) {
+            productList[index1].setMHV(MHV1);
+            productList[index1].setName(NAME1);
+            productList[index1].setLop(CLASS1);
+            productList[index1].setEmail(EMAIL1);
+            productList[index1].setLop(NS1);
+        }
+    }
+
+</script>
+</body>
+</html>
+</script>
+</body>
+</html>

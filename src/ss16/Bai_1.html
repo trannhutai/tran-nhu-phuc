@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <p id="one"></p>
+    <p id="two"></p>
+    <p id="three"></p>
+    <p id="four"></p>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+
+   </canvas>
+<script>
+    let c = document.getElementById("myCanvas");
+    class Rectangle{
+        constructor(ChieuDai,ChieuRong) {
+            this.ChieuDai=ChieuDai
+            this.ChieuRong=ChieuRong
+        }
+        getChieuDai(){
+            return  this.ChieuDai
+        }
+        getChieuRong(){
+           return  this.ChieuRong
+        }
+        setChieuDai(ChieuDai){
+            this.ChieuDai=ChieuDai
+        }
+        setChieuRong(ChieuRong){
+            this.ChieuDai=ChieuRong
+        }
+        Dt(){
+            return this.ChieuDai*this.ChieuRong
+        }
+        Cv(){
+            return (this.ChieuDai+this.ChieuRong)*2
+        }
+    }
+let a=new Rectangle(2,3)
+   document.getElementById("one").innerHTML="giá trị ban đầu "+ a.getChieuRong() +" va " + a.getChieuDai() +  " diên tích hình chữ nhật ban đầu "+a.Dt()+'</br>'
+   document.getElementById("two").innerHTML="giá trị ban đầu "+ a.getChieuRong() + " va " + a.getChieuDai() + " chu vi hình chữ nhật ban đầu "+a.Cv()+'</br>'
+    a.setChieuRong(4)
+    a.setChieuDai(5)
+   document.getElementById("three").innerHTML="giá trị ban đầu "+ a.getChieuRong() +" va " + a.getChieuDai() +  " diện tích hình chữ nhật sau khi thay đổi "+ a.Dt()+'</br>'
+   document.getElementById("four").innerHTML="giá trị ban đầu "+ a.getChieuRong() +" va " + a.getChieuDai() +  " chu vi hình chữ nhật sau khi thay đổi"+ a.Cv()+'</br>'
+</script>
+</body>
+</html>

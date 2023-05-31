@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+class DienThoai {
+    constructor(ten) {
+        this.ten = ten;
+        this.trangThai = false;
+        this.pin = 100;
+        this.tinNhanSapThao = "";
+        this.hopThuDen = [];
+        this.hopThuGui = [];
+    }
+
+    kiemTraTrangThai() {
+        return this.trangThai;
+    }
+
+    batDienThoai() {
+        if (!this.trangThai) {
+            this.trangThai = true;
+            console.log(`${this.ten}: Điện thoại đã được bật.`);
+        } else {
+            console.log(`${this.ten}: Điện thoại đã được bật.`);
+        }
+    }
+
+    tatDienThoai() {
+        if (this.trangThai) {
+            this.trangThai = false;
+            console.log(`${this.ten}: Điện thoại đã được tắt.`);
+        } else {
+            console.log(`${this.ten}: Điện thoại đã được tắt.`);
+        }
+    }
+
+    xacPin() {
+        if (this.pin < 100) {
+            this.pin = 100;
+            console.log(`${this.ten}: Pin đã được sạc đầy.`);
+        } else {
+            console.log(`${this.ten}: Pin đã được sạc đầy.`);
+        }
+    }
+
+    soanTinNhan(noiDung) {
+        if (this.trangThai) {
+            this.tinNhanSapThao = noiDung;
+            this.pin -= 1;
+            console.log(`${this.ten}: Đã soạn tin nhắn.`);
+        } else {
+            console.log(`${this.ten}: Điện thoại chưa được bật.`);
+        }
+    }
+
+    nhanTinNhan(tinNhan, nguoiGui) {
+        if (!this.trangThai) {
+            this.hopThuDen.push({tinNhan, nguoiGui});
+            this.pin -= 1;
+            console.log(`${this.ten}: Đã nhận tin nhắn từ ${nguoiGui}.`);
+        } else {
+            console.log(`${this.ten}: Điện thoại chưa được bật.`);
+        }
+    }
+
+    guiTinNhan(tinNhan, nguoiNhan) {
+        if (!this.trangThai) {
+            this.hopThuGui.push({tinNhan, nguoiNhan});
+            this.pin -= 1;
+            console.log(`${this.ten}: Đã gửi tin nhắn cho ${nguoiNhan}.`);
+        } else {
+            console.log(`${this.ten}: Điện thoại chưa được bật.`);
+        }
+    }
+
+    xemHopThuDen() {
+        if (!this.trangThai) {
+            console.log(`${this.ten}: Hộp thư đến - Có ${this.hopThuDen.length} tin nhắn:`);
+            for (let i = 0; i < this.hopThuDen.length; i++) {
+                console.log(`- Từ: ${this.hopThuDen[i].nguoiGui} - Nội dung: ${this.hopThuDen[i].tinNhan}`);
+            }
+            this.pin -= 1;
+        } else {
+            console.log(`${this.ten}: Điện thoại chưa được bật.`);
+        }
+    }
+    xemHopThuGui() {
+        if (!this.trangThai) {
+            console.log(`${this.ten}: Hộp thư gửi - Có ${this.hopThuGui.length} tin nhắn:`);
+            for (let i = 0; i < this.hopThuGui.length; i++) {
+                console.log(`- Đến: ${this.hopThuGui[i].nguoiNhan} - Nội dung: ${this.hopThuGui[i].tinNhan}`);
+            }
+            this.pin -= 1;
+        } else {
+            console.log(`${this.ten}: Điện thoại chưa được bật.`);
+        }
+    }
+}
+
+// Khởi tạo điện thoại Nokia và iPhone
+let nokia = new DienThoai("Nokia");
+let iphone = new DienThoai("iPhone");
+
+// Nokia soạn tin nhắn và gửi cho iPhone
+nokia.soanTinNhan("hello iphone");
+nokia.xemHopThuDen()
+iphone.xemHopThuGui()
+// iPhone kiểm tra hộp thư đến và hiển thị tin nhắn
+// iphone.xemHopThuDen();
+
+</script>
+</body>
+</html>

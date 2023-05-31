@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class That{
+        constructor(name,weight,sex) {
+            this.name=name;
+            this.weight=weight
+            this.sex=sex
+        }
+    }
+    class Apple {
+        constructor() {
+            this.kilogram=10;
+        }
+        say(voice){
+            console.log("tôi là táo " + voice)
+        }
+        kilo(){
+            return this.kilogram
+        }
+    }
+    class Human extends That{
+        constructor(name,weight,sex) {
+            super(name,weight,sex);
+            this.human=100
+        }
+        say(voice){
+            console.log("I am Human " + voice)
+        }
+        eatApple(apple,human1){
+            if(apple.kilo()>0){
+                apple.kilogram--
+                console.log("con người ăn")
+                human1.human++
+            }
+        }
+    }
+    let human1= new Human()
+    let human2 = new Human()
+    let apple1 =new Apple()
+    let apple2 =new Apple()
+    let adam= new Human("Adam",100,"nam")
+    apple1.say("độc")
+    human1.say("first")
+    adam.eatApple(apple1,human1)
+    console.log(apple2.kilogram)
+    console.log(apple1.kilogram)
+    console.log(human1.human)
+</script>
+</body>
+</html>
