@@ -10,10 +10,10 @@
         constructor(energy) {
             this._energy = energy;
         }
-        set energy(energy) {
+        setenergy(energy) {
             this.energy = energy;
         }
-        get energy() {
+        getenergy() {
             return this._energy;
         }
         decreaseEnergy() {
@@ -27,16 +27,16 @@
                 this._battery = battery;
                 this.status=false
             };
-        get battery() {
+        getbattery() {
             return this._battery;
         }
 
-        set battery(value) {
+        setbattery(value) {
             this._battery = value;
         }
 
-        get batteryInfo () {
-            return Battery.e;
+        getbatteryInfo () {
+            return this._battery.e;
         };
 
         light() {
@@ -56,18 +56,18 @@
         }
     };
     let battery = new Battery();
-    battery.energy(10);
+    battery.setenergy(10);
 
     let flashLamp = new FlashLamp();
-    flashLamp.battery(battery);
+    flashLamp.setbattery(battery);
 
-    document.write("Battery info:" + flashLamp.batteryInfo() + "<br/>");
+    document.write("Battery info:" + flashLamp.getbatteryInfo() + "<br/>");
     flashLamp.light();
 
     document.write("Turn on<br/>")
     flashLamp.turnOn();
     flashLamp.light();
-    document.write("Battery info:" + flashLamp.batteryInfo() + "<br/>");
+    document.write("Battery info:" + flashLamp.getbatteryInfo() + "<br/>");
 
     document.write("Turn off<br/>")
     flashLamp.turnOff();

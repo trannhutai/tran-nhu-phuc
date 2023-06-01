@@ -13,7 +13,8 @@
 <p id="id"></p>
 <button onclick="add()">add</button>
 <button onclick="edit()">edit</button>
-<br>
+<button onclick="delete1()">delete</button>
+<button id="btn-add" style="display: none" onclick="addNew()">Add</button>
 <p id="student"></p>
 <script>
     class Student{
@@ -83,11 +84,13 @@
         document.getElementById("student").innerHTML=bang
     }
     function addStudent(){
-        document.getElementById("id").innerHTML='<input id="enter1" placeholder="Nhập Mã Học Viên">\n' +
-            '<input id="enter2" placeholder="Nhập Tên">\n' +
-            '<input id="enter3" placeholder="Nhập Lớp">\n' +
-            '<input id="enter4" placeholder="Nhập Email">\n' +
-            '<input id="enter5" placeholder="Nhập Ngày Sinh">'
+        document.getElementById("id").innerHTML=
+            '<input type="text" id="enter1" placeholder="Nhập Mã Học Viên" maxlength="10" oninput="check()">\n' +
+            '<input type="text" id="enter2" placeholder="Nhập Tên" maxlength="10" oninput="check()">\n' +
+            '<input type="text" id="enter3" placeholder="Nhập Lớp" maxlength="10" oninput="check()">\n' +
+            '<input type="text" id="enter4" placeholder="Nhập Email" maxlength="50" oninput="check()" >\n' +
+            '<input type="text" id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10" oninput="check()">'+"<br>"+
+            '<small  style="color: red" id="nameError"></small>';
     }
     function add(){
         let MHV=document.getElementById("enter1").value;
@@ -96,33 +99,79 @@
         let EMAIL=document.getElementById("enter4").value;
         let NS=document.getElementById("enter5").value;
         let product=new Student(MHV,NAME,CLASS,EMAIL,NS)
-        productList.push(product)
+        if(MHV,NAME,CLASS,EMAIL,NS !== "") {
+            productList.push(product)
+        }else{
+            alert("please ENTER")
+        }
         display(productList)
     }
-    function editStudent(){
-         prompt()
-        document.getElementById("id").innerHTML='<input id="enter1" placeholder="Nhập Mã Học Viên">\n' +
-            '<input id="enter2" placeholder="Nhập Tên">\n' +
-            '<input id="enter3" placeholder="Nhập Lớp">\n' +
-            '<input id="enter4" placeholder="Nhập Email">\n' +
-            '<input id="enter5" placeholder="Nhập Ngày Sinh">'
+    let index1;
+    function editStudent() {
+       document.getElementById("id").innerHTML =
+            '<input id="enter1" placeholder="Nhập Mã Học Viên" maxlength="10">\n' +
+            '<input id="enter2" placeholder="Nhập Tên" maxlength="10">\n' +
+            '<input id="enter3" placeholder="Nhập Lớp" maxlength="10">\n' +
+            '<input id="enter4" placeholder="Nhập Email" maxlength="10">\n' +
+            '<input id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10">'
+        let a = prompt("ghi mã sinh viên mà bạn muôn thay đổi")
+        for (let i = 0; i <productList.length ; i++) {
+            if(productList[i].getMHV()===a){
+                index1=i
+            }
+        }
+        alert("học viên cần sửa là " + productList[index1].getName())
     }
-    let index1=-1
     function edit(){
-        let  a=prompt("ghi mã sinh viên mà bạn muôn thay đổi")
-        let MHV1=document.getElementById("enter1").value;
-        let NAME1=document.getElementById("enter2").value;
-        let CLASS1=document.getElementById("enter3").value;
-        let EMAIL1=document.getElementById("enter4").value;
-        let NS1=document.getElementById("enter5").value;
-        if(a==productList.MHV) {
+        let MHV1 = document.getElementById("enter1").value;
+        let NAME1 = document.getElementById("enter2").value;
+        let CLASS1 = document.getElementById("enter3").value;
+        let EMAIL1 = document.getElementById("enter4").value;
+        let NS1 = document.getElementById("enter5").value;
             productList[index1].setMHV(MHV1);
             productList[index1].setName(NAME1);
             productList[index1].setLop(CLASS1);
             productList[index1].setEmail(EMAIL1);
-            productList[index1].setLop(NS1);
+            productList[index1].setNS(NS1)
+        display(productList)
+    }
+    let index2;
+    function deleteStudent(){
+        let a =prompt(" nhập mã học viên mà bạn muốn xóa")
+        for (let i = 0; i <productList.length ; i++) {
+            if(productList[i].getMHV()===a){
+                index2=i
+            }
+            alert("học viên cần sửa là " + productList[index1].getName())
         }
     }
+   function delete1(){
+        let cof=confirm("bạn có chắc là muốn xóa chứ")
+       if(cof){
+           productList.splice(index2,1)
+       }
+       display(productList)
+    }
+function check(){
+    let MHV1 = document.getElementById("enter1").value;
+    let NAME1 = document.getElementById("enter2").value;
+    let CLASS1 = document.getElementById("enter3").value;
+    let EMAIL1 = document.getElementById("enter4").value;
+    let NS1 = document.getElementById("enter5").value;
+    if(EMAIL1.length>=50){
+        document.getElementById("nameError").innerHTML=" Email chỉ có thể nhập 50 giá trị"
+        document.getElementById("btn-add").style.display="none"
+
+    }
+    else if(MHV1.length>=10||NAME1.length>=10||CLASS1.length>=10||NS1.length>=10){
+        document.getElementById("nameError").innerHTML="chỉ có thể nhập 10 giá trị"
+        document.getElementById("btn-add").style.display="none"
+    }
+    else{
+        document.getElementById("nameError").innerHTML=""
+        document.getElementById("btn-add").style.display="inline"
+    }
+}
 
 </script>
 </body>
