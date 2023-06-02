@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+</style>
 <body>
 <button onclick="addStudent()" >Thêm mới học viên</button>
 <button onclick="editStudent()">Sửa thông tin học viên</button>
@@ -14,16 +16,17 @@
 <button onclick="add()">add</button>
 <button onclick="edit()">edit</button>
 <button onclick="delete1()">delete</button>
-<button id="btn-add" style="display: none" onclick="addNew()">Add</button>
+<p id="btn-add" style="display: none"></p>
 <p id="student"></p>
 <script>
     class Student{
-        constructor(MHV,Name,Lop,Email,NS) {
+        constructor(MHV,Name,Lop,Email,NS,Module) {
             this.MHV=MHV;
             this.Name=Name;
             this.Lop=Lop;
             this.Email=Email;
-            this.NS=NS
+            this.NS=NS;
+            this.Module=Module;
         }
         setMHV(MHV){
             this.MHV=MHV
@@ -38,10 +41,13 @@
             this.Email=Email;
         }
         setNS(NS){
-            this.NS=NS
+            this.NS=NS;
+        }
+        setModule(Module){
+            this.Module=Module;
         }
         getMHV(){
-            return this.MHV
+            return this.MHV;
         }
         getName(){
             return this.Name;
@@ -55,29 +61,34 @@
         getNS(){
             return this.NS
         }
+        getModule(){
+            return this.Module;
+        }
     }
     let productList=[]
-    let Student1= new Student("HV-0001","Nguyễn Văn A","C1022G1","nguyenvana@gmail.com","01/01/2004")
-    let Student2= new Student("HV-0002","Nguyễn Văn B","C1122G1","nguyenvanb@gmail.com","02/02/2004")
-    let Student3= new Student("HV-0003","Nguyễn Văn C","C1222G1","nguyenvanc@gmail.com","03/03/2004")
+    let Student1= new Student("HV-0001","Nguyễn Văn A","C1022G1","nguyenvana@gmail.com","01/01/2004","1")
+    let Student2= new Student("HV-0002","Nguyễn Văn B","C1122G1","nguyenvanb@gmail.com","01/01/2004","2")
+    let Student3= new Student("HV-0003","Nguyễn Văn C","C1222G1","nguyenvanc@gmail.com","01/01/2004","3")
     productList.push(Student1,Student2,Student3)
     display(productList)
     function display(list){
-        let   bang='<table border="1" >\n' +
+        let   bang='<table border="1">\n' +
             '    <tr>\n' +
             '        <th>Mã Học Viên</th>\n' +
             '        <th>Tên</th>\n' +
             '        <th>Lớp</th>\n' +
             '        <th>Email</th>\n' +
             '        <th>Ngày Sinh</th>\n' +
+            '        <th>Module</th>\n'+
             '    </tr>'
         for (let i = 0; i <list.length ; i++) {
             bang+='<tr>\n' +
-                '        <th>'+list[i].getMHV()+'</th>\n' +
+                '        <th>'+list[i].getMHV(' + i + ')+'</th>\n' +
                 '        <th> '+ list[i].getName()+ '</th>\n' +
                 '        <th>'+ list[i].getLop()+'</th>\n' +
                 '        <th>'+ list[i].getEmail() +'</th>\n' +
                 '        <th>'+ list[i].getNS()+'</th>\n' +
+                '        <th>'+ list[i].getModule('+ i +')+'</th>\n' +
                 '    </tr>'
         }
         bang+='</table>'
@@ -85,11 +96,12 @@
     }
     function addStudent(){
         document.getElementById("id").innerHTML=
-            '<input type="text" id="enter1" placeholder="Nhập Mã Học Viên" maxlength="10" oninput="check()">\n' +
+            '<input type="text" id="enter1" placeholder="Nhập Mã Học Viên" maxlength="7" oninput="check()">\n' +
             '<input type="text" id="enter2" placeholder="Nhập Tên" maxlength="10" oninput="check()">\n' +
             '<input type="text" id="enter3" placeholder="Nhập Lớp" maxlength="10" oninput="check()">\n' +
             '<input type="text" id="enter4" placeholder="Nhập Email" maxlength="50" oninput="check()" >\n' +
-            '<input type="text" id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10" oninput="check()">'+"<br>"+
+            '<input type="date" id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10" oninput="check()">'+
+            '<input type="text" id="enter6" placeholder="Nhập Module" maxlength="1" oninput="check()">'+"<br>"+
             '<small  style="color: red" id="nameError"></small>';
     }
     function add(){
@@ -98,8 +110,9 @@
         let CLASS=document.getElementById("enter3").value;
         let EMAIL=document.getElementById("enter4").value;
         let NS=document.getElementById("enter5").value;
-        let product=new Student(MHV,NAME,CLASS,EMAIL,NS)
-        if(MHV,NAME,CLASS,EMAIL,NS !== "") {
+        let MODULE=document.getElementById("enter6").value;
+        let product=new Student(MHV,NAME,CLASS,EMAIL,NS,MODULE)
+        if(MHV,NAME,CLASS,EMAIL,NS,MODULE!== "") {
             productList.push(product)
         }else{
             alert("please ENTER")
@@ -108,12 +121,13 @@
     }
     let index1;
     function editStudent() {
-       document.getElementById("id").innerHTML =
-            '<input id="enter1" placeholder="Nhập Mã Học Viên" maxlength="10">\n' +
-            '<input id="enter2" placeholder="Nhập Tên" maxlength="10">\n' +
-            '<input id="enter3" placeholder="Nhập Lớp" maxlength="10">\n' +
-            '<input id="enter4" placeholder="Nhập Email" maxlength="10">\n' +
-            '<input id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10">'
+        document.getElementById("id").innerHTML =
+            '<input type="date" id="enter1" placeholder="Nhập Mã Học Viên" maxlength="7">\n' +
+            '<input type="date" id="enter2" placeholder="Nhập Tên" maxlength="10">\n' +
+            '<input type="date" id="enter3" placeholder="Nhập Lớp" maxlength="10">\n' +
+            '<input type="date" id="enter4" placeholder="Nhập Email" maxlength="50">\n' +
+            '<input type="date" id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10">'+
+            '<input type="date" id="enter6" placeholder="Nhập Module" maxlength="1">\n'
         let a = prompt("ghi mã sinh viên mà bạn muôn thay đổi")
         for (let i = 0; i <productList.length ; i++) {
             if(productList[i].getMHV()===a){
@@ -128,11 +142,13 @@
         let CLASS1 = document.getElementById("enter3").value;
         let EMAIL1 = document.getElementById("enter4").value;
         let NS1 = document.getElementById("enter5").value;
-            productList[index1].setMHV(MHV1);
-            productList[index1].setName(NAME1);
-            productList[index1].setLop(CLASS1);
-            productList[index1].setEmail(EMAIL1);
-            productList[index1].setNS(NS1)
+        let MODULE = document.getElementById("enter6").value;
+        productList[index1].setMHV(MHV1);
+        productList[index1].setName(NAME1);
+        productList[index1].setLop(CLASS1);
+        productList[index1].setEmail(EMAIL1);
+        productList[index1].setNS(NS1);
+        productList[index1].setModule(MODULE);
         display(productList)
     }
     let index2;
@@ -145,34 +161,34 @@
             alert("học viên cần sửa là " + productList[index1].getName())
         }
     }
-   function delete1(){
+    function delete1(){
         let cof=confirm("bạn có chắc là muốn xóa chứ")
-       if(cof){
-           productList.splice(index2,1)
-       }
-       display(productList)
+        if(cof){
+            productList.splice(index2,1)
+        }
+        display(productList)
     }
-function check(){
-    let MHV1 = document.getElementById("enter1").value;
-    let NAME1 = document.getElementById("enter2").value;
-    let CLASS1 = document.getElementById("enter3").value;
-    let EMAIL1 = document.getElementById("enter4").value;
-    let NS1 = document.getElementById("enter5").value;
-    if(EMAIL1.length>=50){
-        document.getElementById("nameError").innerHTML=" Email chỉ có thể nhập 50 giá trị"
-        document.getElementById("btn-add").style.display="none"
-
+    function check(){
+        let MHV1 = document.getElementById("enter1").value;
+        let NAME1 = document.getElementById("enter2").value;
+        let CLASS1 = document.getElementById("enter3").value;
+        let EMAIL1 = document.getElementById("enter4").value;
+        let NS1 = document.getElementById("enter5").value;
+        let MODULE = document.getElementById("enter6").value;
+        if(EMAIL1.length>49){
+            document.getElementById("nameError").innerHTML=" Email chỉ có thể nhập 50 giá trị"
+            document.getElementById("btn-add").style.display="none"
+        }
+        else if(MHV1.length>9||NAME1.length>9||CLASS1.length>9||NS1.length>9){
+            document.getElementById("nameError").innerHTML="chỉ có thể nhập 10 giá trị"
+            document.getElementById("btn-add").style.display="none"
+        }
+        else if(MODULE.length>1){}
+        else{
+            document.getElementById("nameError").innerHTML=""
+            document.getElementById("btn-add").style.display="inline"
+        }
     }
-    else if(MHV1.length>=10||NAME1.length>=10||CLASS1.length>=10||NS1.length>=10){
-        document.getElementById("nameError").innerHTML="chỉ có thể nhập 10 giá trị"
-        document.getElementById("btn-add").style.display="none"
-    }
-    else{
-        document.getElementById("nameError").innerHTML=""
-        document.getElementById("btn-add").style.display="inline"
-    }
-}
-
 </script>
 </body>
 </html>
