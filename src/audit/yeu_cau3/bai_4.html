@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nhu phuc</title>
+</head>
+<body>
+<script>
+const menu = {
+    1: {name: "Cafe", price: 20000},
+    2: {name: "Cam vắt", price: 25000},
+    3: {name: "Nước ép cà rốt", price: 15000},
+    4: {name: "Nước ép cà chua", price: 18000},
+    5: {name: "Nước lọc", price: 10000},
+    6: {name: "Nước dừa", price: 22000}
+};
+
+function displayMenu() {
+    console.log("Menu:");
+    for (const key in menu) {
+        console.log(`${key}. ${menu[key].name}`);
+    }
+    console.log("7. Thoát gọi món");
+}
+
+function orderDrink() {
+    let total = 0;
+    let choice;
+    let quantity;
+
+    do {
+        displayMenu();
+        choice = parseInt(prompt("Nhập số tương ứng với thức uống bạn muốn (1-7):"));
+
+        if (choice >= 1 && choice <= 6) {
+            quantity = parseInt(prompt("Nhập số lượng:"));
+            if (quantity > 0) {
+                const price = menu[choice].price;
+                const subtotal = price * quantity;
+                total += subtotal;
+                console.log(`${menu[choice].name} x ${quantity}: ${subtotal}`);
+            } else {
+                console.log("Số lượng không hợp lệ.");
+            }
+        } else if (choice === 7) {
+            console.log("Cảm ơn bạn đã gọi món.");
+        } else {
+            console.log("Lựa chọn không hợp lệ.");
+        }
+    } while (choice !== 7);
+    console.log(`Tổng số tiền cần thanh toán: ${total}`);
+}
+
+orderDrink();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a=("adxcscasd")
+    let b=("jklnjimasdsdawdsxwa")
+    let c=[]
+    let d=[]
+    let h=[]
+    for (let i = 0; i <a.length ; i++) {
+        if(!c.includes(a[i])){
+            c.push(a[i])
+        }
+    }
+    console.log("ký tự được chuẩn hóa và lấy ra tu chuoi dau tien "+c)
+
+    for (let i = 0; i <b.length ; i++) {
+        if(!d.includes(b[i])){
+            d.push(b[i])
+        }
+    }
+    console.log("ký tự được chuẩn hóa và lấy ra từ chuoi thu hai "+d)
+    for (let i = 0; i <c.length ; i++) {
+        for (let j = 0; j <d.length ; j++) {
+            if(c[i]===d[i]){
+              h=c[i]
+            }
+        }
+    }console.log(h)
+
+
+
+</script>
+</body>
+</html>

@@ -122,12 +122,12 @@
     let index1;
     function editStudent() {
         document.getElementById("id").innerHTML =
-            '<input type="date" id="enter1" placeholder="Nhập Mã Học Viên" maxlength="7">\n' +
-            '<input type="date" id="enter2" placeholder="Nhập Tên" maxlength="10">\n' +
-            '<input type="date" id="enter3" placeholder="Nhập Lớp" maxlength="10">\n' +
-            '<input type="date" id="enter4" placeholder="Nhập Email" maxlength="50">\n' +
+            '<input type="text" id="enter1" placeholder="Nhập Mã Học Viên" maxlength="7"text>\n' +
+            '<input type="text" id="enter2" placeholder="Nhập Tên" maxlength="10">\n' +
+            '<input type="text" id="enter3" placeholder="Nhập Lớp" maxlength="10">\n' +
+            '<input type="text" id="enter4" placeholder="Nhập Email" maxlength="50">\n' +
             '<input type="date" id="enter5" placeholder="Nhập Ngày Sinh" maxlength="10">'+
-            '<input type="date" id="enter6" placeholder="Nhập Module" maxlength="1">\n'
+            '<input type="text" id="enter6" placeholder="Nhập Module" maxlength="1">\n'
         let a = prompt("ghi mã sinh viên mà bạn muôn thay đổi")
         for (let i = 0; i <productList.length ; i++) {
             if(productList[i].getMHV()===a){
@@ -181,12 +181,12 @@
         }
         else if(MHV1.length>9||NAME1.length>9||CLASS1.length>9||NS1.length>9){
             document.getElementById("nameError").innerHTML="chỉ có thể nhập 10 giá trị"
-            document.getElementById("btn-add").style.display="none"
+            // document.getElementById("btn-add").style.display="none"
         }
         else if(MODULE.length>1){}
         else{
             document.getElementById("nameError").innerHTML=""
-            document.getElementById("btn-add").style.display="inline"
+            // document.getElementById("btn-add").style.display="inline"
         }
     }
 </script>

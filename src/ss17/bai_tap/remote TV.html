@@ -5,5 +5,57 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+   class Remote{
+       constructor(code) {
+           this.code=code;
+           this.controlSound=1;
+           this.controlTv=false;
+       }
+      getCode(){
+           return this.code;
+       }getControlSound(){
+            return this.controlSound;
+       }
+       getControlTv(){
+           return this.controlTv;
+       }
+
+   }
+   class TV{
+       constructor() {
+           this.turn=false;
+       }
+       turnOn(){
+           if(!this.turn){
+               console.log("Tv Turn on")//bật TV
+           }
+       }
+       turnOff(){
+           if(!remote.getControlTv()&&!this.turn) {
+               console.log("Tv Turn off")//tắt TV
+           }
+       }
+       Channel(channel){
+           if(!this.turn) {
+               console.log(" kenh " + channel)//đến kênh remote điều khiển
+           }
+       }
+       Sound(voice){
+           if(!this.turn){
+               console.log("âm lượng được tăng lên " , voice+2)//tăng âm thanh lên 2
+           }
+
+       }
+   }
+   let remote=new Remote("7")
+   let Tv=new TV()
+   Tv.turnOn()//bật TV
+   Tv.Channel("3")//điều khiển đến kênh 3
+   Tv.Channel(remote.getCode())//điều khiển đến kênh 7
+   Tv.Sound(remote.getControlSound())//điều khiển âm thanh tăng từ 1 lên 3
+   Tv.turnOff()// tắt TV
+
+</script>
 </body>
 </html>
