@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>kéo búa bao</title>
+    <title>Title</title>
 </head>
 <body>
 <script>
+    let flag=0;
+    //ứng dụng chơi game kéo búa bao
     let computer = Math.floor(Math.random()*3)
     let person =prompt("nhập 3 số 0(búa) số 1(bao) số 2(kéo)")
     if (computer==0){
@@ -20,20 +22,24 @@
         alert('person ra búa')
     }else if (person==1){
         alert("person ra bao")
-    }else {
+    }else if(person==2){
         alert("person ra kéo")
+    }else  if(person>2||person<0){
+        alert("nhap sai hay nhap lai")
+        flag++;
     }
 
     if (computer==person){
         alert('hoa')
-    }else if (computer>person){
+    }else if (computer>person&&flag===0){
         alert("computer win")
-    }else if( computer<person) {
+    }else if( computer<person&&flag===0) {
         alert("person win")
     }else{
         alert("bạn phải nhập số từ 0 đén 2")
     }
 
 </script>
+
 </body>
 </html>

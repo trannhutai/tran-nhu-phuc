@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function number1(){
+        let num=[];
+        let a=prompt("enter number");
+        let inputNumber=a.split(",")
+        for (let i = 0; i <inputNumber.length ; i++) {
+            let nums= parseInt(inputNumber[i].trim())
+            num.push(nums)
+        }
+        let soLe=0;
+        let name=0;
+        for (let i = 0; i <num.length ; i++) {
+            if(num[i]%2!==0){
+                if(i%2===0){
+                    soLe+=num[i]
+                    console.log("so le "+ num[i]+ " vi tri chan " +i)
+                    name+=1
+                }
+            }
+        }
+        console.log("tổng trung bình cộng của số lẻ ở vị trí chẵn là " + (soLe/name))
+    }
+   number1()
+</script>
+</body>
+</html>
